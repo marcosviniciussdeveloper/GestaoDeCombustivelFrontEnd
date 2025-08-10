@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestão de Combustível</title>
+
+    <link rel="stylesheet" href="styles-branco-vermelho-simples.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- LOGIN -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>⛽ Gestão de Combustível</h1>
+                    <p>Faça login para acessar o sistema</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="digite o e-mail cadastrado" required />
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <div class="password-wrapper">
+                            <input id="senha" name="senha" type="password" placeholder="••••••••" required />
+                            <button type="button" class="toggle-password" id="toggleSenha"
+                                aria-label="Mostrar/ocultar senha">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="senhaError"></div>
+                    </div>
+
+                    <div class="error-message" id="loginError"></div>
+
+                    <button type="submit" id="loginBtn" class="btn-primary">
+                        <span id="loginBtnText">Entrar</span>
+                        <div id="loginSpinner" class="spinner hidden"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP -->
+    <div id="mainScreen" class="screen">
+        <button id="mobileMenuBtn" class="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Gestão Combustível</h2>
+            </div>
+
+            <div class="user-info">
+                <div id="userAvatar" class="user-avatar">U</div>
+                <div class="user-details">
+                    <div id="userName" class="user-name">Usuário</div>
+                    <div id="userRole" class="user-role">Usuário</div>
+                </div>
+            </div>
+
+            <nav id="sidebarNav" class="sidebar-nav"></nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div id="contentArea"><!-- render dinâmico --></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
