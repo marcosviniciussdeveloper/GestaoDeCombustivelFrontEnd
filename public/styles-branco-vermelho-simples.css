@@ -662,142 +662,132 @@ input.error {
     font-weight: 700
 }
 
-/* ====== MOTORISTAS (UI) ====== */
-.motoristas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center
+/* ====== MOTORISTAS (UI) – NOVO ====== */
+
+.motoristas-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.motoristas-filtros .filters-row {
-    display: grid;
-    grid-template-columns: 1fr 220px auto;
-    gap: 16px;
-    align-items: end
+/* Barra de filtros: input | select | Filtrar | Limpar */
+.motoristas-filtros .filters-row{
+  display:grid;
+  grid-template-columns: 1fr 220px max-content max-content;
+  gap:16px;
+  align-items:center;
+}
+.motoristas-filtros .filters-actions{
+  display:flex;
+  gap:10px;
 }
 
-.motoristas-filtros .filters-actions {
-    display: flex;
-    gap: 10px
+.motoristas-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.motoristas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px
+.motoristas-empty{
+  text-align:center;
+  padding:40px 16px;
+  color:#666;
+  background:#f8f9fa;
+  border:1px dashed #e0e0e0;
+  border-radius:12px;
+}
+.motoristas-empty i{
+  font-size:48px;
+  color:#dc3545;
+  display:block;
+  margin-bottom:8px;
 }
 
-.motoristas-empty {
-    text-align: center;
-    padding: 40px 16px;
-    color: #666;
-    background: #f8f9fa;
-    border: 1px dashed #e0e0e0;
-    border-radius: 12px
+/* Card */
+.motorista-card{
+  display:grid;
+  grid-template-columns: 56px 1fr auto auto; /* avatar | info | status | actions */
+  gap:16px;
+  align-items:center;
+  background:#fff;
+  border:1px solid #e0e0e0;
+  border-radius:12px;
+  padding:12px 16px;
 }
 
-.motoristas-empty i {
-    font-size: 48px;
-    color: #dc3545;
-    display: block;
-    margin-bottom: 8px
+/* Avatar */
+.motorista-avatar{
+  width:56px; height:56px; border-radius:50%;
+  background:#dc3545; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:20px;
 }
 
-.motorista-card {
-    display: grid;
-    grid-template-columns: 56px 1fr 90px 90px;
-    gap: 16px;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 12px 16px
+/* Conteúdo principal */
+.motorista-info{
+  display:flex; flex-direction:column; gap:6px;
+  min-width:0; /* evita quebra feia quando nomes são longos */
+}
+.motorista-name{
+  font-weight:800; color:#111827; line-height:1.2;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.motorista-meta{
+  display:flex; flex-wrap:wrap; gap:10px 16px;
+  color:#555; font-size:14px;
+}
+.motorista-meta i{ margin-right:6px; color:#dc3545; }
+
+/* Status badge */
+.motorista-status{
+  font-weight:800; font-size:12px;
+  padding:6px 10px; border-radius:999px;
+  text-align:center; border:1px solid transparent;
+  text-transform:uppercase; white-space:nowrap;
+  justify-self:end; /* cola na direita em telas largas */
+}
+.motorista-status.on{
+  color:#065f46; background:#d1e7dd; border-color:#badbcc;
+}
+.motorista-status.off{
+  color:#7c4a03; background:#fff3cd; border-color:#ffecb5;
 }
 
-.motorista-avatar {
-    width: 56px;
-    height: 56px;
-    background: #dc3545;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 20px;
-    border-radius: 50%
+/* Ações (editar/excluir) */
+.motorista-actions{
+  display:flex; gap:8px; justify-content:flex-end;
+}
+.motorista-actions button{
+  background:#fff; border:1px solid #e0e0e0; color:#dc3545;
+  width:36px; height:36px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all .15s ease;
+}
+.motorista-actions button:hover{
+  background:#f8f9fa; border-color:#dc3545; color:#a61e2c;
 }
 
-.motorista-info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px
+/* Responsivo */
+@media (max-width: 900px){
+  .motoristas-filtros .filters-row{
+    grid-template-columns: 1fr 1fr; /* input | select; botões descem */
+  }
+}
+@media (max-width: 768px){
+  .motoristas-filtros .filters-row{ grid-template-columns:1fr; }
+
+  /* card empilha: avatar | info | status | actions */
+  .motorista-card{
+    grid-template-columns: 48px 1fr;
+    gap:12px;
+  }
+  .motorista-status,
+  .motorista-actions{
+    grid-column: 1 / -1;       /* ocupa linha inteira */
+    justify-content:flex-start; /* ações colam à esquerda */
+  }
 }
 
-.motorista-name {
-    font-weight: 800;
-    color: #111827
-}
-
-.motorista-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    color: #555;
-    font-size: 14px
-}
-
-.motorista-meta i {
-    margin-right: 6px;
-    color: #dc3545
-}
-
-.motorista-status {
-    font-weight: 800;
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    text-align: center;
-    border: 1px solid transparent;
-    text-transform: uppercase
-}
-
-.motorista-status.on {
-    color: #065f46;
-    background: #d1e7dd;
-    border-color: #badbcc
-}
-
-.motorista-status.off {
-    color: #7c4a03;
-    background: #fff3cd;
-    border-color: #ffecb5
-}
-
-.motorista-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px
-}
-
-.motorista-actions button {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    cursor: pointer;
-    color: #dc3545;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .15s ease
-}
-
-.motorista-actions button:hover {
-    background: #f8f9fa;
-    border-color: #dc3545;
-    color: #a61e2c
-}
 
 /* ====== SKELETON (loading) ====== */
 .skeleton {
